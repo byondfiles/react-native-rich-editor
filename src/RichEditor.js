@@ -33,6 +33,7 @@ export default class RichTextEditor extends Component {
         defaultParagraphSeparator: 'div',
         editorInitializedCallback: () => {},
         initialHeight: 0,
+        paddingFix:0
     };
 
     constructor(props) {
@@ -67,6 +68,7 @@ export default class RichTextEditor extends Component {
             firstFocusEnd,
             useContainer,
             initialHeight,
+            paddingFix,
         } = props;
         that.state = {
             html: {
@@ -214,11 +216,11 @@ export default class RichTextEditor extends Component {
     }
 
     setWebHeight(height) {
-        const {onHeightChange, useContainer, initialHeight} = this.props;
+        const {onHeightChange, useContainer, initialHeight, paddingFix} = this.props;
         if (height !== this.state.height) {
             const maxHeight = Math.max(height, initialHeight);
             if (!this.unmount && useContainer && maxHeight >= initialHeight) {
-                this.setState({height: maxHeight});
+                this.setState({height: maxHeight + paddingFix});
             }
             onHeightChange && onHeightChange(height);
         }
