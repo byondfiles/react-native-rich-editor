@@ -138,6 +138,11 @@ export interface RichEditorProps extends WebViewProps {
         initialCSSText?: string; // editor global css initial text
         cssText?: string; // editor global css text
     };
+    
+    /**
+    * Fix for contentheight when adding padding to style 
+    */
+    paddingFix?: number;
 }
 
 export type SelectionChangeListener = (items: string[]) => void;
