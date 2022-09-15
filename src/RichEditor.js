@@ -225,6 +225,15 @@ export default class RichTextEditor extends Component {
             onHeightChange && onHeightChange(height);
         }
     }
+    
+    resetWebHeight() {
+        const {onHeightChange, useContainer, initialHeight, paddingFix} = this.props;
+        const maxHeight = Math.max(this.state.height, initialHeight);
+        if (!this.unmount && useContainer && maxHeight >= initialHeight) {
+            this.setState({height: maxHeight + paddingFix});
+        }
+        onHeightChange && onHeightChange(height);
+    }
 
     /**
      * @param {String} type
