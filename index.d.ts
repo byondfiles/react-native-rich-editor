@@ -181,6 +181,8 @@ export class RichEditor extends React.Component<RichEditorProps> {
      * Set current HTML to be rendered
      */
     setContentHTML: (html: string) => void;
+    
+    resetWebHeight: () => void;
 
     blurContentEditor: () => void;
 
